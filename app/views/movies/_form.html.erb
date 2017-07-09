@@ -1,0 +1,47 @@
+<div class="container">
+  <%= form_with(model: movie, local: true, multipart: true) do |form| %>
+    <div class="form-group row">
+      <%= form.label :title, {class: 'col-sm-4 col-lg-2 col-form-label col-form-label-lg'} %>      
+      <div class="col-sm-8 col-lg-10">
+        <%= form.text_field :title, {placeholder: 'Title', class: 'form-control form-control-md'} %>
+        <% if movie.errors[:title].any? %>
+          <ul class="mb-0">
+            <% movie.errors[:title].each do |message| %>
+            <li class="text-danger"><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>      
+    </div>
+    <div class="form-group row">
+      <%= form.label :description, {class: 'col-sm-4 col-lg-2 col-form-label col-form-label-lg'} %>      
+      <div class="col-sm-8 col-lg-10">
+        <%= form.text_area :description, {class: 'form-control form-control-md', rows: 3} %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= form.label :year, {class: 'col-sm-4 col-lg-2 col-form-label col-form-label-lg'} %>
+      <div class="col-sm-8 col-lg-10">
+        <%= form.select :year, 
+          options_for_select((1970..Date.today.year).to_a.sort{|x,y| y <=> x}, movie.year), {}, 
+          {class: 'form-control form-control-md'}  
+        %>
+      </div>
+    </div>
+    <div class="form-group row">
+    <%= form.label :image_path, 'Image', {class: 'col-sm-4 col-lg-2 col-form-label col-form-label-lg'} %>
+    <div class="col-sm-8 col-lg-10">
+      <div class="form-control form-control-md">        
+        <%= image_tag(movie.image_path, {class: 'img-fluid mb-3'}) if movie.image_path? %>
+        <%= form.file_field :image_path %>
+      </div>      
+    </div>
+    </div>
+    <div class="form-group row">      
+      <div class="col-sm-12">        
+        <%= form.submit class: 'btn btn-primary float-right' %>        
+        <%= link_to 'Back', movies_path, {class: 'btn btn-secondary float-right mr-2'} %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HomieMovies</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>    
+  </head>
+
+  <body>
+    <div id="main">      
+      <b-navbar toggleable class="bg-inverse p-1">
+        <b-link class="navbar-brand text-white" to="#">
+          <span>Brand</span>
+        </b-link>
+      </b-navbar>      
+      <% if alert %>
+        <b-alert variant="danger" show class="rounded-0">
+          <%= alert %>        
+        </b-alert>
+      <% end %>          
+      
+      <%= yield %>  
+    </div>    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

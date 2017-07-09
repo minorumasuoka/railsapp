@@ -1,0 +1,19 @@
+<div class="page-header">
+    <h2 class="title">Movie Details</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 push-sm-6">
+      <%= image_tag(@movie.image_path, {class: 'img-fluid mb-3'}) if @movie.image_path? %>    
+    </div>
+    <div class="col-sm-6 pull-sm-6">
+      <h3><%= @movie.title %></h3>
+      <p>(<%= @movie.year %>)</p>
+      <p class="mt-4"><%= @movie.description %></p>
+    </div>
+    <div class="col-sm-12">
+      <%= link_to 'Back', rent_a_movie_movies_path, {class: 'btn btn-secondary float-right mt-4'} %>
+    </div>
+  </div>
+</div>

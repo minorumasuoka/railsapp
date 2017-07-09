@@ -1,0 +1,16 @@
+// Place all the styles related to the Movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-header{
+    padding: 30px;
+    padding-bottom: 5px;    
+    margin-bottom: 50px;
+
+    .title{
+      font-weight: bold;
+      color: #aaa;
+      border-bottom: 3px solid #0aa;
+      padding-bottom: 10px;
+    }
+}
